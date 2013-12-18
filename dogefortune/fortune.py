@@ -16,7 +16,7 @@ qualifiers = {
 
 ends = [". wow", ". amaze", ". omg", ""]
 
-no = ["be", "am"]
+no = ["be", "am", "dont", "lot", "in", "use", "do", "have", "go", ]
 
 
 def get_fortune():
