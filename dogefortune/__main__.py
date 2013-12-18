@@ -1,6 +1,6 @@
 import time
 from multiprocessing import Process
-from dogefortune import twitter, dogecoin
+from dogefortune import twitter, dogecoin, fortune
 
 
 def twitter_loop():
@@ -17,7 +17,7 @@ def dogecoin_loop():
             account = tx["account"]
             amount = tx["amount"]
             print("Received {0}DOGE from {1}".format(amount, account))
-            msg = "@{0} very thanks, much generous {1} doges"
+            msg = "@{0} {1}".format(fortune.get_fortune())[:140]
             twitter.send_tweet(msg.format(account, amount))
         time.sleep(30)
 
