@@ -1,0 +1,4 @@
+__pycache__/
+venv/
+dogefortune/dogeconfig.py
+last_block_hash

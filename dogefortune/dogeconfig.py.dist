@@ -1,0 +1,11 @@
+# Twitter settings
+TWITTER_USERNAME = "dogefortune"
+TWITTER_OAUTH_TOKEN = "token"
+TWITTER_OAUTH_SECRET = "secret"
+TWITTER_CONSUMER_KEY = "key"
+TWITTER_CONSUMER_SECRET = "secret"
+
+# Dogecoin settings
+DOGECOIN_RPC_URL = "http://localhost:22555/"
+DOGECOIN_RPC_USER = "dogecoinrpc"
+DOGECOIN_RPC_PASS = "password"
