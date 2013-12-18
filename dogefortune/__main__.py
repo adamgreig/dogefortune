@@ -5,7 +5,7 @@ from dogefortune import twitter, dogecoin, fortune
 
 def twitter_loop():
     for follower in twitter.stream_followers():
-        address = dogecoin.get_address(follower)
+        address = dogecoin.get_address("@" + follower)
         print("Followed by {0}, address {1}".format(follower, address))
         msg = "much follow, very donate, so fortune: {0}"
         twitter.send_dm(follower, msg.format(address))
@@ -16,8 +16,10 @@ def dogecoin_loop():
         for tx in dogecoin.get_transactions():
             account = tx["account"]
             amount = tx["amount"]
+            if amount < 0 or not account or account[0] != "@":
+                continue
             print("Received {0}DOGE from {1}".format(amount, account))
-            msg = "@{0} {1}".format(fortune.get_fortune())[:140]
+            msg = (account + " " + fortune.get_fortune())[:140]
             twitter.send_tweet(msg.format(account, amount))
         time.sleep(30)
 
