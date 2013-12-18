@@ -1,7 +1,10 @@
+import os.path
 import random
 from textblob import TextBlob as TB
 
-fortunes = open("fortunes").read().lower().replace("'", "").split("\n")
+fortunepath = os.path.join(os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__))), "fortunes")
+fortunes = open(fortunepath).read().lower().replace("'", "").split("\n")
 
 qualifiers = {
     "NNS": ["very", "so", "much", "such"],
