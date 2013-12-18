@@ -38,15 +38,14 @@ def dogerpc(method, args=None):
 
 def get_transactions():
     global last_block_hash
-    txs = dogerpc("listsinceblock", [last_block_hash])['transactions']
-    latest_block_id = dogerpc("getblockcount")
-    last_block_hash = dogerpc("getblockhash", [latest_block_id])
+    r = dogerpc("listsinceblock", [last_block_hash])
+    last_block_hash = r['lastblock']
     try:
         with open("last_block_hash", "w") as f:
             f.write(last_block_hash)
     except IOError:
         pass
-    return txs
+    return r['transactions']
 
 
 def get_address(username):
