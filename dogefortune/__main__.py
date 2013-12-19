@@ -18,6 +18,8 @@ def dogecoin_loop():
             amount = tx["amount"]
             if amount < 0 or not account or account[0] != "@":
                 continue
+            if tx["confirmations"] == 0:
+                continue
             print("Received {0}DOGE from {1}".format(amount, account))
             msg = (account + " " + fortune.get_fortune())[:140]
             twitter.send_tweet(msg.format(account, amount))
