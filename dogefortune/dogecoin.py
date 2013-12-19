@@ -8,7 +8,6 @@ rpcurl = dogeconfig.DOGECOIN_RPC_URL
 
 # Globals r cool
 last_block_hash = "0"
-last_block_count = 0
 try:
     with open("last_block_hash", "r") as f:
         last_block_hash = f.read()
@@ -32,13 +31,9 @@ def get_block_count():
 
 
 def get_transactions():
-    global last_block_hash, last_block_count
-    if last_block_count == get_block_count():
-        return []
-
+    global last_block_hash
     r = dogerpc("listsinceblock", [last_block_hash])
     last_block_hash = r['lastblock']
-    last_block_count = get_block_count()
     try:
         with open("last_block_hash", "w") as f:
             f.write(last_block_hash)
